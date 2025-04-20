@@ -2,31 +2,103 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Riyad Predictor BDT Game</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      color: green;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .status {
+      color: lime;
+      margin-bottom: 15px;
+    }
+
+    .label {
+      font-size: 20px;
+      color: green;
+    }
+
+    #periodInput {
+      padding: 8px;
+      font-size: 18px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+    }
+
+    #startBtn {
+      padding: 10px 25px;
+      background-color: red;
+      color: white;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #result {
+      font-size: 22px;
+      margin-top: 20px;
+    }
+
+    .animation {
+      margin-top: 30px;
+      font-size: 20px;
+      color: yellow;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0% { opacity: 0.1; }
+      50% { opacity: 1; }
+      100% { opacity: 0.1; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Riyad Predictor BDT Game</h1>
+  <div class="status">Server : <strong>Connected</strong></div>
+
+  <div class="label">Period Number</div>
+  <input type="text" id="periodInput" placeholder="Enter last 3 digits" maxlength="3" />
+
+  <br />
+  <button id="startBtn" onclick="predict()">Start</button>
+
+  <div id="result"></div>
+
+  <div class="animation">Predicting your result...</div>
+
   <script>
-    function predictBigSmall() {
-      const input = document.getElementById("periodInput").value;
-      const result = document.getElementById("result");
-      result.innerText = "Predicting...";
+    function predict() {
+      const input = document.getElementById("periodInput").value.trim();
+      const resultDiv = document.getElementById("result");
+
+      if (input.length !== 3 || isNaN(input)) {
+        resultDiv.innerHTML = "Please enter a valid 3-digit number.";
+        return;
+      }
+
       setTimeout(() => {
         const num = parseInt(input);
-        if (isNaN(num) || input.length !== 3) {
-          result.innerText = "Please enter a valid 3-digit number";
-        } else {
-          result.innerText = num >= 500 ? "Big" : "Small";
-        }
+        const sum = input.split('').reduce((a, b) => a + parseInt(b), 0);
+        const result = (sum % 2 === 0) ? "Big" : "Small";
+        resultDiv.innerHTML = `<strong>${result}</strong> will come.`;
       }, 5000);
     }
   </script>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-</head>
-<body class="bg-black text-white min-h-screen flex flex-col items-center justify-center">
-  <h1 class="text-4xl font-bold text-green-500 mb-6">Riyad Predictor BDT Game</h1>
-  <div class="mb-4 text-green-400">Server: Connected</div>
-  <label for="periodInput" class="block mb-2 text-green-500 text-lg">Period Number (last 3 digits):</label>
-  <input id="periodInput" type="text" maxlength="3" class="p-2 rounded text-black mb-4" />
-  <button onclick="predictBigSmall()" class="bg-white text-red-600 px-4 py-2 rounded font-semibold">Start</button>
-  <div id="result" class="mt-6 text-xl font-bold"></div>
+
 </body>
 </html>
