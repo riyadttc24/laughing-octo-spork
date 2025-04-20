@@ -1,84 +1,111 @@
 <!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RIYAD Trader</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Investment App</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
-      font-family: 'Courier New', monospace;
-      background-color: black;
-      color: #00ff00;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
     }
-    #startScreen, #mainApp {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-    }
-    #startScreen {
-      display: flex;
-    }
-    h1 {
-      font-size: 2em;
-      margin-bottom: 20px;
-      animation: blink 1s step-start 0s infinite;
-    }
-    @keyframes blink {
-      50% { opacity: 0; }
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: red;
+    header {
+      background-color: #1e90ff;
       color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav {
+      display: flex;
+      justify-content: space-around;
+      background: #ddd;
+      padding: 0.5rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+    .container {
+      padding: 1rem;
+    }
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin: 1rem 0;
+    }
+    .btn {
+      background: #1e90ff;
+      color: white;
+      padding: 0.5rem 1rem;
       border: none;
-      cursor: pointer;
       border-radius: 5px;
+      cursor: pointer;
     }
-    .greenText {
-      color: #00ff00;
+    .form-group {
+      margin-bottom: 1rem;
     }
-    .inputBox {
-      margin: 10px 0;
-      padding: 10px;
-      font-size: 16px;
-      width: 200px;
+    input[type="text"], input[type="password"], input[type="number"] {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
     }
   </style>
 </head>
-<body>
-  <div id="startScreen">
-    <h1>RIYAD Trader</h1>
-    <button onclick="enterApp()">Enter</button>
-  </div>  <div id="mainApp">
-    <h1 class="greenText">RIYAD Predictor BDT Game</h1>
-    <p class="greenText">Server: Connected</p>
-    <input type="text" id="periodNumber" class="inputBox" placeholder="Enter last 3 digits" />
-    <button onclick="predictResult()">Start</button>
-    <h2 id="result" class="greenText"></h2>
-  </div>  <script>
-    function enterApp() {
-      document.getElementById('startScreen').style.display = 'none';
-      document.getElementById('mainApp').style.display = 'flex';
-    }
-
-    function predictResult() {
-      const input = document.getElementById('periodNumber').value;
-      const result = document.getElementById('result');
-      result.textContent = 'Predicting...';
-      setTimeout(() => {
-        const num = parseInt(input);
-        if (!isNaN(num)) {
-          result.textContent = num % 2 === 0 ? 'BIG' : 'SMALL';
-        } else {
-          result.textContent = 'Invalid Input';
-        }
-      }, 5000);
-    }
-  </script></body>
+<body><header>
+  <h1>Riyad Investment</h1>
+</header><nav>
+  <a href="#">হোম</a>
+  <a href="#deposit">ডিপোজিট</a>
+  <a href="#withdraw">উইথড্র</a>
+  <a href="#commission">কমিশন</a>
+  <a href="#login">লগইন</a>
+</nav><div class="container">  <div class="card" id="registration">
+    <h2>রেজিস্ট্রেশন</h2>
+    <div class="form-group">
+      <input type="text" placeholder="আপনার নাম">
+    </div>
+    <div class="form-group">
+      <input type="text" placeholder="মোবাইল নম্বর">
+    </div>
+    <div class="form-group">
+      <input type="password" placeholder="পাসওয়ার্ড">
+    </div>
+    <button class="btn">রেজিস্টার করুন</button>
+  </div>  <div class="card" id="login">
+    <h2>লগইন</h2>
+    <div class="form-group">
+      <input type="text" placeholder="মোবাইল নম্বর">
+    </div>
+    <div class="form-group">
+      <input type="password" placeholder="পাসওয়ার্ড">
+    </div>
+    <button class="btn">লগইন করুন</button>
+  </div>  <div class="card" id="deposit">
+    <h2>ডিপোজিট</h2>
+    <p>নিচের bKash/Nagad নাম্বারে টাকা পাঠান: <strong>01876309238</strong></p>
+    <div class="form-group">
+      <input type="number" placeholder="টাকার পরিমাণ">
+    </div>
+    <div class="form-group">
+      <input type="text" placeholder="লেনদেন আইডি (Txn ID)">
+    </div>
+    <button class="btn">সাবমিট করুন</button>
+  </div>  <div class="card" id="withdraw">
+    <h2>উইথড্র</h2>
+    <div class="form-group">
+      <input type="number" placeholder="টাকার পরিমাণ">
+    </div>
+    <div class="form-group">
+      <input type="text" placeholder="আপনার bKash/Nagad নাম্বার">
+    </div>
+    <button class="btn">উইথড্র রিকোয়েস্ট</button>
+  </div>  <div class="card" id="commission">
+    <h2>রেফার কমিশন</h2>
+    <p>আপনার রেফার কোড: <strong>Riyad123</strong></p>
+    <p>প্রতি রেফারে আপনি পাবেন: <strong>৳50</strong></p>
+  </div></div></body>
 </html>
