@@ -2,15 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My First Project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Big/Small Prediction</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Hello, World!</h1>
-  <p>This is my first deployed project.</p>
-  <button onclick="sayHello()">Click Me</button>
-
+  <div class="container">
+    <h1>Big / Small Predictor</h1>
+    <p>Enter last 10 numbers:</p>
+    <input type="text" id="numbersInput" placeholder="e.g. 12,45,67,23,88,..." />
+    <button onclick="predict()">Predict</button>
+    <h2 id="result"></h2>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>
