@@ -1,104 +1,82 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Riyad Predictor BDT Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Riyad BOSS VIP</title>
   <style>
     body {
-      background-color: black;
-      color: white;
+      margin: 0;
+      padding: 0;
+      background: url('https://i.ibb.co/Z8xR9q7/hacker-bg.jpg') no-repeat center center fixed;
+      background-size: cover;
       font-family: Arial, sans-serif;
+      color: #00ff00;
       text-align: center;
-      padding: 20px;
     }
-
+    .container {
+      padding-top: 60px;
+    }
     h1 {
-      color: green;
-      font-size: 28px;
+      font-size: 24px;
+      background-color: #003300;
+      border: 2px solid #00ff00;
+      padding: 10px;
+      margin-bottom: 20px;
+      display: inline-block;
+      color: #00ff00;
+    }
+    .button {
+      display: block;
+      background-color: #003300;
+      color: #00ff00;
+      border: 2px solid #00ff00;
+      padding: 15px;
+      margin: 10px auto;
+      width: 80%;
+      max-width: 300px;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 10px;
+      transition: background-color 0.3s;
+    }
+    .button:hover {
+      background-color: #006600;
+    }
+    .connected {
+      font-weight: bold;
       margin-bottom: 10px;
+      color: #00ff00;
     }
-
-    .status {
-      color: lime;
-      margin-bottom: 15px;
+    .period, .result {
+      font-size: 16px;
+      margin: 5px 0;
     }
-
-    .label {
+    .check {
+      background-color: #003300;
+      border: 2px solid #00ff00;
+      color: #00ff00;
       font-size: 20px;
-      color: green;
-    }
-
-    #periodInput {
-      padding: 8px;
-      font-size: 18px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 5px;
-    }
-
-    #startBtn {
-      padding: 10px 25px;
-      background-color: red;
-      color: white;
-      font-size: 18px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    #result {
-      font-size: 22px;
       margin-top: 20px;
     }
-
-    .animation {
-      margin-top: 30px;
-      font-size: 20px;
-      color: yellow;
+    .animate {
       animation: blink 1s infinite;
     }
-
     @keyframes blink {
-      0% { opacity: 0.1; }
+      0% { opacity: 0.2; }
       50% { opacity: 1; }
-      100% { opacity: 0.1; }
+      100% { opacity: 0.2; }
     }
   </style>
 </head>
 <body>
+  <div class="container">
+    <h1>RIYAD BOSS VIP</h1>
+    <div class="connected">SERVER CONNECTED</div>
+    <div class="period">PERIOD NO : <span id="period">202504201200101234</span></div>
+    <div class="result animate" id="result">RESULT : BIG</div><button class="button check">CHECK RESULT &#x2714;</button>
+<button class="button">RIYAD BOSS</button>
+<button class="button">VIP HACK</button>
 
-  <h1>Riyad Predictor BDT Game</h1>
-  <div class="status">Server : <strong>Connected</strong></div>
-
-  <div class="label">Period Number</div>
-  <input type="text" id="periodInput" placeholder="Enter last 3 digits" maxlength="3" />
-
-  <br />
-  <button id="startBtn" onclick="predict()">Start</button>
-
-  <div id="result"></div>
-
-  <div class="animation">Predicting your result...</div>
-
-  <script>
-    function predict() {
-      const input = document.getElementById("periodInput").value.trim();
-      const resultDiv = document.getElementById("result");
-
-      if (input.length !== 3 || isNaN(input)) {
-        resultDiv.innerHTML = "Please enter a valid 3-digit number.";
-        return;
-      }
-
-      setTimeout(() => {
-        const num = parseInt(input);
-        const sum = input.split('').reduce((a, b) => a + parseInt(b), 0);
-        const result = (sum % 2 === 0) ? "Big" : "Small";
-        resultDiv.innerHTML = `<strong>${result}</strong> will come.`;
-      }, 5000);
-    }
-  </script>
-
+  </div>
 </body>
 </html>
