@@ -3,17 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Big/Small Prediction</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Riyad Predictor BDT Game</title>
+  <script>
+    function predictBigSmall() {
+      const input = document.getElementById("periodInput").value;
+      const result = document.getElementById("result");
+      result.innerText = "Predicting...";
+      setTimeout(() => {
+        const num = parseInt(input);
+        if (isNaN(num) || input.length !== 3) {
+          result.innerText = "Please enter a valid 3-digit number";
+        } else {
+          result.innerText = num >= 500 ? "Big" : "Small";
+        }
+      }, 5000);
+    }
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-  <div class="container">
-    <h1>Big / Small Predictor</h1>
-    <p>Enter last 10 numbers:</p>
-    <input type="text" id="numbersInput" placeholder="e.g. 12,45,67,23,88,..." />
-    <button onclick="predict()">Predict</button>
-    <h2 id="result"></h2>
-  </div>
-  <script src="script.js"></script>
+<body class="bg-black text-white min-h-screen flex flex-col items-center justify-center">
+  <h1 class="text-4xl font-bold text-green-500 mb-6">Riyad Predictor BDT Game</h1>
+  <div class="mb-4 text-green-400">Server: Connected</div>
+  <label for="periodInput" class="block mb-2 text-green-500 text-lg">Period Number (last 3 digits):</label>
+  <input id="periodInput" type="text" maxlength="3" class="p-2 rounded text-black mb-4" />
+  <button onclick="predictBigSmall()" class="bg-white text-red-600 px-4 py-2 rounded font-semibold">Start</button>
+  <div id="result" class="mt-6 text-xl font-bold"></div>
 </body>
 </html>
