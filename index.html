@@ -2,81 +2,83 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Riyad BOSS VIP</title>
+  <title>RIYAD Trader</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      background: url('https://i.ibb.co/Z8xR9q7/hacker-bg.jpg') no-repeat center center fixed;
-      background-size: cover;
-      font-family: Arial, sans-serif;
+      font-family: 'Courier New', monospace;
+      background-color: black;
       color: #00ff00;
-      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
-    .container {
-      padding-top: 60px;
+    #startScreen, #mainApp {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+    }
+    #startScreen {
+      display: flex;
     }
     h1 {
-      font-size: 24px;
-      background-color: #003300;
-      border: 2px solid #00ff00;
-      padding: 10px;
+      font-size: 2em;
       margin-bottom: 20px;
-      display: inline-block;
-      color: #00ff00;
-    }
-    .button {
-      display: block;
-      background-color: #003300;
-      color: #00ff00;
-      border: 2px solid #00ff00;
-      padding: 15px;
-      margin: 10px auto;
-      width: 80%;
-      max-width: 300px;
-      font-size: 18px;
-      font-weight: bold;
-      border-radius: 10px;
-      transition: background-color 0.3s;
-    }
-    .button:hover {
-      background-color: #006600;
-    }
-    .connected {
-      font-weight: bold;
-      margin-bottom: 10px;
-      color: #00ff00;
-    }
-    .period, .result {
-      font-size: 16px;
-      margin: 5px 0;
-    }
-    .check {
-      background-color: #003300;
-      border: 2px solid #00ff00;
-      color: #00ff00;
-      font-size: 20px;
-      margin-top: 20px;
-    }
-    .animate {
-      animation: blink 1s infinite;
+      animation: blink 1s step-start 0s infinite;
     }
     @keyframes blink {
-      0% { opacity: 0.2; }
-      50% { opacity: 1; }
-      100% { opacity: 0.2; }
+      50% { opacity: 0; }
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: red;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .greenText {
+      color: #00ff00;
+    }
+    .inputBox {
+      margin: 10px 0;
+      padding: 10px;
+      font-size: 16px;
+      width: 200px;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>RIYAD BOSS VIP</h1>
-    <div class="connected">SERVER CONNECTED</div>
-    <div class="period">PERIOD NO : <span id="period">202504201200101234</span></div>
-    <div class="result animate" id="result">RESULT : BIG</div><button class="button check">CHECK RESULT &#x2714;</button>
-<button class="button">RIYAD BOSS</button>
-<button class="button">VIP HACK</button>
+  <div id="startScreen">
+    <h1>RIYAD Trader</h1>
+    <button onclick="enterApp()">Enter</button>
+  </div>  <div id="mainApp">
+    <h1 class="greenText">RIYAD Predictor BDT Game</h1>
+    <p class="greenText">Server: Connected</p>
+    <input type="text" id="periodNumber" class="inputBox" placeholder="Enter last 3 digits" />
+    <button onclick="predictResult()">Start</button>
+    <h2 id="result" class="greenText"></h2>
+  </div>  <script>
+    function enterApp() {
+      document.getElementById('startScreen').style.display = 'none';
+      document.getElementById('mainApp').style.display = 'flex';
+    }
 
-  </div>
-</body>
+    function predictResult() {
+      const input = document.getElementById('periodNumber').value;
+      const result = document.getElementById('result');
+      result.textContent = 'Predicting...';
+      setTimeout(() => {
+        const num = parseInt(input);
+        if (!isNaN(num)) {
+          result.textContent = num % 2 === 0 ? 'BIG' : 'SMALL';
+        } else {
+          result.textContent = 'Invalid Input';
+        }
+      }, 5000);
+    }
+  </script></body>
 </html>
